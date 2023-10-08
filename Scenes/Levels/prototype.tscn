@@ -1,0 +1,123 @@
+[gd_scene load_steps=23 format=3 uid="uid://coue2qehpn4fr"]
+
+[ext_resource type="Texture2D" uid="uid://b8q44ipg8a3cq" path="res://Assets/Textures/Black.png" id="1_hwes2"]
+[ext_resource type="Texture2D" uid="uid://doyodkg1ds7td" path="res://Assets/Textures/Sky.png" id="1_rrvcb"]
+[ext_resource type="PackedScene" uid="uid://cr2ersq7g6q6f" path="res://Scenes/Characters/player.tscn" id="2_1g73n"]
+[ext_resource type="Texture2D" uid="uid://gwt4mrbmdv01" path="res://Assets/Textures/Orange.png" id="2_087ax"]
+[ext_resource type="Texture2D" uid="uid://dkpqh8de7tb3n" path="res://Assets/Textures/Green.png" id="3_qkav0"]
+[ext_resource type="Shader" path="res://Shaders/SpeedTrails.gdshader" id="6_trnib"]
+[ext_resource type="Script" path="res://Scripts/Effects/SpeedTrails.gd" id="7_jfh4u"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6c4vd"]
+panorama = ExtResource("1_rrvcb")
+
+[sub_resource type="Sky" id="Sky_5ngqa"]
+sky_material = SubResource("PanoramaSkyMaterial_6c4vd")
+
+[sub_resource type="Environment" id="Environment_ctwiv"]
+background_mode = 2
+sky = SubResource("Sky_5ngqa")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajchh"]
+albedo_texture = ExtResource("1_hwes2")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mmup0"]
+material = SubResource("StandardMaterial3D_ajchh")
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_26ptr"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkvud"]
+albedo_texture = ExtResource("2_087ax")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_plpqy"]
+material = SubResource("StandardMaterial3D_jkvud")
+size = Vector3(10, 3, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v7prx"]
+data = PackedVector3Array(-5, 1.5, 0.5, 5, 1.5, 0.5, -5, -1.5, 0.5, 5, 1.5, 0.5, 5, -1.5, 0.5, -5, -1.5, 0.5, 5, 1.5, -0.5, -5, 1.5, -0.5, 5, -1.5, -0.5, -5, 1.5, -0.5, -5, -1.5, -0.5, 5, -1.5, -0.5, 5, 1.5, 0.5, 5, 1.5, -0.5, 5, -1.5, 0.5, 5, 1.5, -0.5, 5, -1.5, -0.5, 5, -1.5, 0.5, -5, 1.5, -0.5, -5, 1.5, 0.5, -5, -1.5, -0.5, -5, 1.5, 0.5, -5, -1.5, 0.5, -5, -1.5, -0.5, 5, 1.5, 0.5, -5, 1.5, 0.5, 5, 1.5, -0.5, -5, 1.5, 0.5, -5, 1.5, -0.5, 5, 1.5, -0.5, -5, -1.5, 0.5, 5, -1.5, 0.5, -5, -1.5, -0.5, 5, -1.5, 0.5, 5, -1.5, -0.5, -5, -1.5, -0.5)
+
+[sub_resource type="PrismMesh" id="PrismMesh_0l7qq"]
+left_to_right = -2.0
+size = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfpgv"]
+albedo_texture = ExtResource("3_qkav0")
+uv1_triplanar = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rit6o"]
+data = PackedVector3Array(-12.5, 2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, -12.5, 2.5, -2.5, -2.5, -2.5, -2.5, 2.5, -2.5, -2.5, -12.5, 2.5, 2.5, -12.5, 2.5, -2.5, 2.5, -2.5, 2.5, -12.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, -12.5, 2.5, -2.5, -12.5, 2.5, 2.5, -2.5, -2.5, -2.5, -12.5, 2.5, 2.5, -2.5, -2.5, 2.5, -2.5, -2.5, -2.5, -2.5, -2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5, -2.5, -2.5, -2.5, -2.5, -2.5)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_edxsq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_se3v4"]
+seamless = true
+noise = SubResource("FastNoiseLite_edxsq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ual4q"]
+shader = ExtResource("6_trnib")
+shader_parameter/line_color = Color(1, 1, 1, 0.0980392)
+shader_parameter/line_count = 1.0
+shader_parameter/line_density = 0.306
+shader_parameter/line_faloff = 0.25
+shader_parameter/mask_size = 0.1
+shader_parameter/mask_edge = 0.5
+shader_parameter/animation_speed = 20.0
+shader_parameter/noise = SubResource("NoiseTexture2D_se3v4")
+
+[node name="Prototype" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ctwiv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866026, -0.433013, 0.249999, 0.5, -0.75, 0.433012, -1.3411e-07, 0.499999, 0.866026, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_mmup0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_26ptr")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3)
+mesh = SubResource("BoxMesh_plpqy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v7prx")
+
+[node name="Slope" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 4)
+mesh = SubResource("PrismMesh_0l7qq")
+surface_material_override/0 = SubResource("StandardMaterial3D_pfpgv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Slope"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Slope/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_rit6o")
+
+[node name="Player" parent="." instance=ExtResource("2_1g73n")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SpeedTrails" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+visible = false
+material = SubResource("ShaderMaterial_ual4q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_jfh4u")
+player = NodePath("../../Player")
