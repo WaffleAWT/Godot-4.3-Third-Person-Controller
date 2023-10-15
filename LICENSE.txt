@@ -1,7 +1,3 @@
 This asset is licenced under the MIT licence:
 
 https://en.wikipedia.org/wiki/MIT_License
-
-Creator : WaffleAWT
-link : https://waffleawt.itch.io/
-Discord : WaffleAWT
