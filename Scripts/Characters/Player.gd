@@ -5,11 +5,13 @@ const LERP_VALUE : float = 0.15
 var snap_vector : Vector3 = Vector3.DOWN
 var speed : float
 
+@export_group("Movement variables")
 @export var walk_speed : float = 2.0
 @export var run_speed : float = 5.0
 @export var jump_strength : float = 15.0
 @export var gravity : float = 50.0
-@export var animation_blend : float = 7.0
+
+const ANIMATION_BLEND : float = 7.0
 
 @onready var player_mesh : Node3D = $Mesh
 @onready var spring_arm_pivot : Node3D = $SpringArmPivot
@@ -52,10 +54,10 @@ func animate(delta):
 		
 		if velocity.length() > 0:
 			if speed == run_speed:
-				animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), 1.0, delta * animation_blend))
+				animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), 1.0, delta * ANIMATION_BLEND))
 			else:
-				animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), 0.0, delta * animation_blend))
+				animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), 0.0, delta * ANIMATION_BLEND))
 		else:
-			animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), -1.0, delta * animation_blend))
+			animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), -1.0, delta * ANIMATION_BLEND))
 	else:
 		animator.set("parameters/ground_air_transition/transition_request", "air")

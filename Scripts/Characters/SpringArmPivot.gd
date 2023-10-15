@@ -1,7 +1,8 @@
 extends Node3D
 
-const NORMAL_FOV : float = 75.0
-const RUN_FOV : float = 90.0
+@export var NORMAL_FOV : float = 75.0
+@export var RUN_FOV : float = 90.0
+
 const CAMERA_BLEND : float = 0.05
 
 @onready var spring_arm : SpringArm3D = $SpringArm3D
