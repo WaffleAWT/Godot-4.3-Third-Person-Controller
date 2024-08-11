@@ -15,12 +15,13 @@ sky_material = SubResource("PanoramaSkyMaterial_6c4vd")
 [sub_resource type="Environment" id="Environment_ctwiv"]
 background_mode = 2
 sky = SubResource("Sky_5ngqa")
-tonemap_mode = 2
+tonemap_mode = 3
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajchh"]
 albedo_texture = ExtResource("1_hwes2")
 uv1_triplanar = true
+texture_filter = 5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mmup0"]
 material = SubResource("StandardMaterial3D_ajchh")
@@ -32,6 +33,7 @@ data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkvud"]
 albedo_texture = ExtResource("2_087ax")
 uv1_triplanar = true
+texture_filter = 5
 
 [sub_resource type="BoxMesh" id="BoxMesh_plpqy"]
 material = SubResource("StandardMaterial3D_jkvud")
@@ -47,6 +49,7 @@ size = Vector3(5, 5, 5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfpgv"]
 albedo_texture = ExtResource("3_qkav0")
 uv1_triplanar = true
+texture_filter = 5
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rit6o"]
 data = PackedVector3Array(-12.5, 2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, -12.5, 2.5, -2.5, -2.5, -2.5, -2.5, 2.5, -2.5, -2.5, -12.5, 2.5, 2.5, -12.5, 2.5, -2.5, 2.5, -2.5, 2.5, -12.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, -12.5, 2.5, -2.5, -12.5, 2.5, 2.5, -2.5, -2.5, -2.5, -12.5, 2.5, 2.5, -2.5, -2.5, 2.5, -2.5, -2.5, -2.5, -2.5, -2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5, -2.5, -2.5, -2.5, -2.5, -2.5)
@@ -59,6 +62,10 @@ environment = SubResource("Environment_ctwiv")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866026, -0.433013, 0.249999, 0.5, -0.75, 0.433012, -1.3411e-07, 0.499999, 0.866026, 0, 0, 0)
 shadow_enabled = true
+directional_shadow_split_1 = 0.07
+directional_shadow_split_2 = 0.12
+directional_shadow_split_3 = 0.2
+directional_shadow_blend_splits = true
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_mmup0")
