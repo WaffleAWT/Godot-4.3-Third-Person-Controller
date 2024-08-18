@@ -3,25 +3,26 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6wofk4ae5yf3"
-path="res://.godot/imported/White.png-b9a28ae3ec8af9b1f19b5c7031ea16eb.ctex"
+path.bptc="res://.godot/imported/White.png-b9a28ae3ec8af9b1f19b5c7031ea16eb.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/White.png"
-dest_files=["res://.godot/imported/White.png-b9a28ae3ec8af9b1f19b5c7031ea16eb.ctex"]
+dest_files=["res://.godot/imported/White.png-b9a28ae3ec8af9b1f19b5c7031ea16eb.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
